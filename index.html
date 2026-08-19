@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday, Yasser</title>
+  <meta name="description" content="A premium birthday greeting website for Yasser." />
+  <style>
+    :root {
+      --midnight: #0b1630;
+      --midnight-2: #101f42;
+      --midnight-3: #162a57;
+      --champagne: #d6b46b;
+      --champagne-soft: #edd9a3;
+      --ivory: #f8f4ea;
+      --mist: rgba(255, 255, 255, 0.08);
+      --glass: rgba(255, 255, 255, 0.06);
+      --text: #f5f1e8;
+      --muted: #c9c3b8;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 20%, rgba(214, 180, 107, 0.12), transparent 26%),
+        radial-gradient(circle at 85% 10%, rgba(214, 180, 107, 0.08), transparent 22%),
+        linear-gradient(135deg, #071022 0%, var(--midnight) 35%, var(--midnight-2) 68%, #0a1631 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(to bottom, rgba(255,255,255,0.02), transparent 30%),
+        radial-gradient(circle at 50% 120%, rgba(214,180,107,0.09), transparent 35%);
+      z-index: 0;
+    }
+
+    .stars {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .stars span {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: rgba(255, 240, 210, 0.75);
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(214, 180, 107, 0.5);
+      animation: floatStar linear infinite;
+    }
+
+    .stars span:nth-child(1) { top: 10%; left: 15%; animation-duration: 8s; }
+    .stars span:nth-child(2) { top: 20%; left: 75%; animation-duration: 10s; }
+    .stars span:nth-child(3) { top: 32%; left: 35%; animation-duration: 12s; }
+    .stars span:nth-child(4) { top: 55%; left: 84%; animation-duration: 9s; }
+    .stars span:nth-child(5) { top: 70%; left: 20%; animation-duration: 11s; }
+    .stars span:nth-child(6) { top: 82%; left: 60%; animation-duration: 13s; }
+    .stars span:nth-child(7) { top: 16%; left: 52%; animation-duration: 7s; }
+    .stars span:nth-child(8) { top: 62%; left: 8%; animation-duration: 14s; }
+
+    @keyframes floatStar {
+      0% { transform: translateY(0px) scale(1); opacity: 0.45; }
+      50% { transform: translateY(-8px) scale(1.3); opacity: 1; }
+      100% { transform: translateY(0px) scale(1); opacity: 0.45; }
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      align-items: center;
+      padding: 48px 0 40px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border: 1px solid rgba(214, 180, 107, 0.28);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--champagne-soft);
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      backdrop-filter: blur(12px);
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--champagne), var(--champagne-soft));
+      box-shadow: 0 0 12px rgba(214, 180, 107, 0.75);
+    }
+
+    h1 {
+      margin: 22px 0 18px;
+      font-size: clamp(44px, 7vw, 84px);
+      line-height: 0.96;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+
+    .gold {
+      background: linear-gradient(135deg, #f3e3bd 0%, var(--champagne) 45%, #fff1c8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .lead {
+      max-width: 620px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.9;
+      margin: 0 0 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 8px;
+    }
+
+    .btn {
+      appearance: none;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      padding: 15px 22px;
+      border-radius: 999px;
+      transition: 0.3s ease;
+      font-size: 15px;
+      letter-spacing: 0.02em;
+    }
+
+    .btn-primary {
+      color: #091224;
+      background: linear-gradient(135deg, #f4dfae 0%, var(--champagne) 100%);
+      box-shadow: 0 14px 30px rgba(214, 180, 107, 0.22);
+      font-weight: 700;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 36px rgba(214, 180, 107, 0.3);
+    }
+
+    .btn-secondary {
+      color: var(--ivory);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(214, 180, 107, 0.24);
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    .portrait-wrap {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .portrait-card {
+      position: relative;
+      width: min(440px, 100%);
+      padding: 16px;
+      border-radius: 34px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.09), rgba(255,255,255,0.03));
+      border: 1px solid rgba(214, 180, 107, 0.2);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      overflow: hidden;
+    }
+
+    .portrait-card::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: 34px;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(214,180,107,0.35), rgba(255,255,255,0.04));
+      -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    .portrait-frame {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      min-height: 540px;
+      background:
+        linear-gradient(180deg, rgba(214, 180, 107, 0.14), rgba(214, 180, 107, 0.02)),
+        #0f1d3d;
+    }
+
+    .portrait-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: contrast(1.04) saturate(0.95);
+    }
+
+    .portrait-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to top, rgba(6, 11, 23, 0.62), rgba(6, 11, 23, 0.1) 45%, rgba(255,255,255,0) 80%);
+    }
+
+    .portrait-tag {
+      position: absolute;
+      left: 20px;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 12px;
+    }
+
+    .portrait-tag .name {
+      font-size: 22px;
+      color: var(--ivory);
+      margin: 0 0 4px;
+    }
+
+    .portrait-tag .sub {
+      font-size: 13px;
+      color: var(--champagne-soft);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .floating-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(8px);
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    .orb-1 {
+      width: 120px;
+      height: 120px;
+      background: rgba(214, 180, 107, 0.12);
+      top: -16px;
+      right: -8px;
+    }
+
+    .orb-2 {
+      width: 160px;
+      height: 160px;
+      background: rgba(255, 255, 255, 0.05);
+      bottom: -30px;
+      left: -28px;
+    }
+
+    section {
+      padding: 32px 0 90px;
+    }
+
+    .section-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.025));
+      border: 1px solid rgba(214, 180, 107, 0.15);
+      border-radius: var(--radius-xl);
+      padding: 34px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+    }
+
+    .section-title {
+      margin: 0 0 14px;
+      font-size: clamp(28px, 4vw, 42px);
+      color: var(--ivory);
+      letter-spacing: -0.02em;
+    }
+
+    .section-text {
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.9;
+      margin: 0;
+    }
+
+    .quote-block {
+      margin-top: 24px;
+      padding: 24px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(214,180,107,0.09), rgba(255,255,255,0.03));
+      border: 1px solid rgba(214, 180, 107, 0.16);
+    }
+
+    .quote-block p {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.8;
+      color: var(--ivory);
+    }
+
+    .quote-block span {
+      display: block;
+      margin-top: 14px;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--champagne-soft);
+    }
+
+    .blessing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    .blessing-card {
+      padding: 24px;
+      border-radius: var(--radius-lg);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(214, 180, 107, 0.12);
+      transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+    }
+
+    .blessing-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(214, 180, 107, 0.28);
+      background: rgba(255,255,255,0.06);
+    }
+
+    .blessing-card h3 {
+      margin: 0 0 10px;
+      color: var(--champagne-soft);
+      font-size: 18px;
+    }
+
+    .blessing-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 15px;
+    }
+
+    .final-note {
+      text-align: center;
+      padding: 10px 0 90px;
+    }
+
+    .final-box {
+      max-width: 850px;
+      margin: 0 auto;
+      padding: 36px 30px;
+      border-radius: 30px;
+      background:
+        radial-gradient(circle at top, rgba(214,180,107,0.12), transparent 35%),
+        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.025));
+      border: 1px solid rgba(214, 180, 107, 0.18);
+      box-shadow: var(--shadow);
+    }
+
+    .final-box h2 {
+      margin: 0 0 16px;
+      font-size: clamp(30px, 4vw, 48px);
+    }
+
+    .final-box p {
+      margin: 0 auto;
+      max-width: 700px;
+      color: var(--muted);
+      line-height: 1.95;
+      font-size: 17px;
+    }
+
+    .signature {
+      margin-top: 22px;
+      color: var(--champagne-soft);
+      font-size: 15px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    footer {
+      padding: 0 0 36px;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.45);
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .arabic {
+      display: inline-block;
+      margin-top: 10px;
+      color: var(--champagne-soft);
+      font-size: 19px;
+      letter-spacing: 0.01em;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .blessing-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 30px;
+      }
+
+      .portrait-card {
+        max-width: 520px;
+      }
+
+      .portrait-frame {
+        min-height: 460px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(100% - 18px, var(--max));
+      }
+
+      .section-card,
+      .final-box {
+        padding: 24px 18px;
+      }
+
+      .portrait-frame {
+        min-height: 390px;
+      }
+
+      .lead,
+      .section-text,
+      .final-box p {
+        font-size: 16px;
+      }
+
+      .quote-block p {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="stars">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">For the man I pray for</div>
+          <h1>
+            Happy Birthday,<br />
+            <span class="gold">Yasser</span>
+          </h1>
+          <p class="lead">
+            On this special day, I thank Allah for your life, your heart, and the calm strength you carry.
+            You are a man of sincerity, faith, and purpose, and I pray that this new year brings you deeper
+            barakah, guarded steps, a peaceful heart, and success that always leads you closer to Him.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#message" class="btn btn-primary">Read My Prayer For You</a>
+            <a href="#blessings" class="btn btn-secondary">Birthday Wishes</a>
+          </div>
+        </div>
+
+        <div class="portrait-wrap">
+          <div class="floating-orb orb-1"></div>
+          <div class="floating-orb orb-2"></div>
+
+          <div class="portrait-card">
+            <div class="portrait-frame">
+              <img src="yasser.jpg.jpg" alt="Portrait of Yasser" / >
+              <div class="portrait-overlay"></div>
+              <div class="portrait-tag">
+                <div>
+                  <p class="name">Yasser</p>
+                  <div class="sub">A heart guided by faith</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="message">
+      <div class="section-card">
+        <h2 class="section-title">A Birthday Message From My Heart</h2>
+        <p class="section-text">
+          Yasser, loving you means admiring not only the person you are, but also the faith that shapes you.
+          I see the kindness in your words, the discipline in your steps, and the quiet strength in the way
+          you carry yourself. Today is not only a celebration of your birth, but a celebration of the goodness
+          Allah has written into your character.
+        </p>
+
+        <div class="quote-block">
+          <p>
+            I pray that Allah protects your heart from what hardens it, fills your life with what benefits you,
+            expands your rizq, strengthens your iman, and makes you among those who are deeply loved by Him.
+          </p>
+          <span>My prayer for you, today and always</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="blessings">
+      <div class="section-card">
+        <h2 class="section-title">What I Pray For In Your New Year</h2>
+        <p class="section-text">
+          More than happiness, I pray for a life filled with meaning, protection, and nearness to Allah.
+          May every step ahead of you be guided, and may every blessing reach you in the most beautiful way.
+        </p>
+
+        <div class="blessing-grid">
+          <div class="blessing-card">
+            <h3>For Your Faith</h3>
+            <p>
+              May Allah keep your heart firm upon truth, soften it with mercy, and increase you in sincerity,
+              wisdom, and steadfast iman.
+            </p>
+          </div>
+
+          <div class="blessing-card">
+            <h3>For Your Life</h3>
+            <p>
+              May He open doors that bring goodness, close paths that carry harm, and write for you a life
+              filled with barakah, peace, and honorable success.
+            </p>
+          </div>
+
+          <div class="blessing-card">
+            <h3>For Your Heart</h3>
+            <p>
+              May Allah grant you calm in difficult days, gratitude in beautiful days, and a soul that always
+              returns to Him with trust.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-card">
+        <h2 class="section-title">A Gentle Du'a For You</h2>
+        <p class="section-text">
+          Ya Allah, bless Yasser in his age, his health, his work, his provision, and his future. Guard him from
+          what is seen and unseen. Place light in his heart, clarity in his mind, sincerity in his deeds, and
+          tranquility in his soul. Make him among the righteous, increase him in beneficial knowledge, and let
+          his life be pleasing to You.
+        </p>
+        <div class="arabic">اللهم بارك له في عمره وقلبه ورزقه واهدِه إلى كل خير</div>
+      </div>
+    </section>
+
+    <section class="final-note">
+      <div class="final-box">
+        <h2>To The One I Hold Dear</h2>
+        <p>
+          Happy birthday, my love. May this year be one of answered prayers, quiet victories, protected dreams,
+          and beautiful closeness to Allah. No matter how many birthdays pass, I will always be grateful that
+          someone as precious as you exists in this world.
+        </p>
+        <div class="signature">With love, always</div>
+      </div>
+    </section>
+
+    <footer>
+      Made with love for Yasser
+    </footer>
+  </main>
+</body>
+</html>
